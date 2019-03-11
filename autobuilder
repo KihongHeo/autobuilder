@@ -67,7 +67,8 @@ elif [[ -f "autogen.sh" ]]; then
   run_configure || exit 1
 elif [[ -f "bootstrap" ]]; then
   echo "bootstrap found."
-  run_bootstrap run_configure || exit 1
+  run_bootstrap || exit 1
+  run_configure || exit 1
 elif [[ -f "buildconf" ]]; then
   echo "buildconf found."
   run_buildconf || exit 1
