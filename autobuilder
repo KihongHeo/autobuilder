@@ -17,7 +17,10 @@ run_autogen() {
 }
 
 run_configure() {
-  ./configure >&configure.log ||
+  ./configure --help | grep "\-\-enable-gcc-warnings" >&/dev/null &&
+    CONFIGURE_OPT="--disable-gcc-warnings"
+
+  ./configure $CONFIGURE_OPT >&configure.log ||
     {
       echo "Error in configure: see $PWD/configure.log"
       return 1
